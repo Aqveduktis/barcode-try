@@ -1,9 +1,10 @@
 import React from 'react';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 import { productStore } from 'reducers/productStore';
 import { BarcodeScanner } from 'components/BarcodeScanner';
 import { ScanBarcode } from './components/Home';
+import {Result} from './components/Result'
 
 const onDetected = (code) => {
 	console.log(`Code: ${code}`);
@@ -18,9 +19,11 @@ const reducer = combineReducers({
 
 const store = configureStore({ reducer });
 export const App = () => {
+  
 	return (
 		<Provider store={store}>
 			<div>
+      <Result />
 				<label>
 					{' '}
 					Test codes here: <input type="text" onChange={(e) => onDetected(e.target.value)} />

@@ -15,6 +15,14 @@ export const productStore = createSlice({
 		// Possible actione
 		// New Task
 		addProduct: (state, action) => {
+      const arr = state.scannedProducts
+      const object = action.payload
+      if (!arr.includes(object)){
+        state.scannedProducts.push(object)
+      }
+      
+      //carBrands.includes(car1) // -> true
+      
 			// add new product to list
 		}
 	}
